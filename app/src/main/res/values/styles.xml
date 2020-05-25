@@ -1,11 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark1</item>
+        <!-- colorPrimary: The primary brand color of your app -->
+        <item name="colorPrimary">@color/colorPrimary1</item>
+        <!-- colorOnPrimary: The color used for elements displayed on top of your primary colors -->
+        <item name="colorOnPrimary">@android:color/darker_gray</item>
+        <!-- colorSecondary: The secondary brand color of your app -->
+        <item name="colorSecondary">@color/colorSecondary1</item>
+        <!-- colorOnSecondary: The color used for elements displayed on top of your secondary colors -->
+        <item name="colorOnSecondary">@android:color/white</item>
+        <!-- colorSecondaryVariant: A lighter/darker variant of your secondary brand color -->
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant1</item>
+        <!-- colorError: The color used for errors (often a shade of red)-->
+        <item name="colorError">@color/colorError1</item>
+        <item name="colorOnError">@android:color/white</item>
     </style>
 
 </resources>
