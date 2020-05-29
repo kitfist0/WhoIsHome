@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">AppAthome</string>
+    <string name="app_name">AppAtHome</string>
+    <string name="authenticate">Authenticate</string>
+    <string name="welcome">Welcome!</string>
 </resources>
