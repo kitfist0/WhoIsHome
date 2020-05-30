@@ -1,0 +1,114 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/item_horizontal_margin"
+    android:layout_marginEnd="@dimen/item_horizontal_margin"
+    android:layout_marginTop="@dimen/item_vertical_margin"
+    android:layout_marginBottom="@dimen/item_vertical_margin"
+    app:contentPadding="@dimen/card_content_padding"
+    app:cardCornerRadius="@dimen/card_corners"
+    app:cardElevation="@dimen/card_without_elevation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imagePlace"
+                android:layout_width="@dimen/card_icon_size"
+                android:layout_height="@dimen/card_icon_size"
+                android:background="@drawable/oval_secondary_variant"
+                android:layout_margin="@dimen/margin_default"
+                android:padding="@dimen/margin_default"
+                android:src="@drawable/vd_rounded_place"
+                android:tint="?colorOnSurface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/margin_default"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageExpand"
+                app:layout_constraintStart_toEndOf="@+id/imagePlace"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/textItemTitle"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    tools:text="@tools:sample/full_names" />
+                <TextView
+                    android:id="@+id/textItemSubTitle"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
+                    tools:text="2 users" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageExpand"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/vd_rounded_expand_more"
+                android:tint="?colorControlNormal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutWithRecycler"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:paddingTop="@dimen/margin_medium"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_recipient"
+                tools:itemCount="2"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonEdit"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_margin="@dimen/margin_default"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="?colorSecondaryVariant"
+                app:rippleColor="?colorSecondaryVariant"
+                android:textColor="?colorSecondaryVariant"
+                app:strokeWidth="2dp"
+                android:text="@string/edit_place" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

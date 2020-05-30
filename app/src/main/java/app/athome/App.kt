@@ -1,15 +1,5 @@
 package app.athome
 
-import android.app.Application
-import app.athome.di.components.DaggerAppComponent
+import app.athome.core.interfaces.CoreApplication
 
-class App: Application() {
-
-    val appComponent = DaggerAppComponent.builder().application(this).build()
-
-    override fun onCreate() {
-        appComponent.inject(this)
-        super.onCreate()
-    }
-
-}
+class App: CoreApplication()

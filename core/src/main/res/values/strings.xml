@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AppAtHome</string>
+    <string name="add_recipient">Add recipient</string>
+    <string name="authenticate">Authenticate</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="edit_place">Edit place</string>
+    <string name="no_places">No places</string>
+    <string name="welcome">Welcome!</string>
+    <string name="recipient">1 recipient</string>
+    <string name="recipients">%s recipients</string>
+</resources>
