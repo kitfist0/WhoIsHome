@@ -1,2 +1,5 @@
+include ':login'
+include ':core'
+include ':main'
 rootProject.name='AppAthome'
 include ':app'

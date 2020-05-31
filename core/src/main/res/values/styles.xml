@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark1</item>
+        <!-- colorPrimary: The primary brand color of your app -->
+        <item name="colorPrimary">@color/colorPrimary1</item>
+        <!-- colorOnPrimary: The color used for elements displayed on top of your primary colors -->
+        <item name="colorOnPrimary">@android:color/darker_gray</item>
+        <!-- colorSecondary: The secondary brand color of your app -->
+        <item name="colorSecondary">@color/colorSecondary1</item>
+        <!-- colorOnSecondary: The color used for elements displayed on top of your secondary colors -->
+        <item name="colorOnSecondary">@android:color/white</item>
+        <!-- colorSecondaryVariant: A lighter/darker variant of your secondary brand color -->
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant1</item>
+        <!-- colorError: The color used for errors (often a shade of red) -->
+        <item name="colorError">@color/colorError1</item>
+        <item name="colorOnError">@android:color/white</item>
+        <!-- The color used for surfaces (i.e. Material sheets, Cards) -->
+        <item name="colorSurface">@color/colorSurface1</item>
+        <item name="colorOnSurface">@color/colorOnSurface1</item>
+        <!-- The color behind all other screen content -->
+        <item name="android:colorBackground">@color/colorBackground1</item>
+    </style>
+
+</resources>

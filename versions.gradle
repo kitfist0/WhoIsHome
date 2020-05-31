@@ -1,0 +1,36 @@
+ext {
+    constraintVersion = '1.1.3'
+    coroutinesVersion = '1.3.0'
+    daggerVersion = '2.27'
+    glideVersion = '4.9.0'
+    gsonVersion = '2.8.6'
+    lifecycleVersion = '2.2.0'
+    materialVersion = '1.1.0'
+    preferenceVersion = '1.1.1'
+    roomVersion = '2.2.5'
+
+    // Constraint Layout
+    constraint = "androidx.constraintlayout:constraintlayout:$constraintVersion"
+    // Coroutines
+    coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    // Dagger
+    dagger = "com.google.dagger:dagger:$daggerVersion"
+    daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+    // Gson
+    gson = "com.google.code.gson:gson:$gsonVersion"
+    // Glide
+    glide = "com.github.bumptech.glide:glide:$glideVersion"
+    glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
+    // Lifecycle Components
+    lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    // Material Design
+    material = "com.google.android.material:material:$materialVersion"
+    // Preference
+    preference = "androidx.preference:preference-ktx:$preferenceVersion"
+    // Room
+    room = "androidx.room:room-runtime:$roomVersion"
+    roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    roomKtx = "androidx.room:room-ktx:$roomVersion"
+}
