@@ -1,6 +1,7 @@
 package app.athome.core.di
 
 import androidx.lifecycle.ViewModelProvider
+import app.athome.core.util.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 

@@ -1,15 +1,13 @@
 package app.athome.main.ui
 
 import android.util.Log
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import app.athome.core.database.entity.Place
 import app.athome.core.database.entity.Recipient
 import app.athome.core.repository.PlaceRepository
 import app.athome.core.repository.RecipientRepository
 import app.athome.core.util.SingleLiveEvent
-import app.athome.main.BuildConfig
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.random.Random
@@ -20,14 +18,20 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     companion object {
-        private const val tag = "MAIN_VIEW_MODEL"
+        private const val TAG = "MAIN_VIEW_MODEL"
     }
 
     val emptyListEvent: SingleLiveEvent<Boolean> = SingleLiveEvent()
 
-    val places = Transformations.map(placeRepository.getPlacesWithRecipients()) {
+    private val placeWithRecipients = liveData {
+        placeRepository.getPlaceWithRecipients().collect { emit(it) }
+    }
+
+    val places = Transformations.map(placeWithRecipients) {
         if (it.isNullOrEmpty()) {
             emptyListEvent.value = true
+        } else {
+            logging("placeWithRecipients observed, num of items is ${it.size}")
         }
         return@map it
     }
@@ -61,6 +65,6 @@ class MainViewModel @Inject constructor(
     }
 
     private fun logging(message: String) {
-        if (BuildConfig.DEBUG) Log.d(tag, message)
+        Log.d(TAG, message)
     }
 }

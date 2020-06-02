@@ -4,9 +4,8 @@ import app.athome.core.di.ViewModelModule
 import app.athome.core.interfaces.CoreProvider
 import app.athome.main.ui.MainFragment
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
+@MainScope
 @Component(
     dependencies = [CoreProvider::class],
     modules = [MainModule::class, ViewModelModule::class]
@@ -14,4 +13,17 @@ import javax.inject.Singleton
 interface MainComponent {
 
     fun inject(fragment: MainFragment)
+
+    companion object {
+        private var mainComponent: MainComponent? = null
+
+        fun getComponent(coreProvider: CoreProvider): MainComponent {
+            if (mainComponent == null) {
+                mainComponent = DaggerMainComponent.builder()
+                    .coreProvider(coreProvider)
+                    .build()
+            }
+            return requireNotNull(mainComponent)
+        }
+    }
 }

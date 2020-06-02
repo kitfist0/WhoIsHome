@@ -1,4 +1,4 @@
-package app.athome.core.di
+package app.athome.core.util
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

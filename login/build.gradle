@@ -30,7 +30,15 @@ apply from: "$project.rootDir/versions.gradle"
 
 dependencies {
     implementation project(':core')
+    // -- Constraint Layout
+    implementation constraint
+    // -- Dagger compiler
     kapt daggerCompiler
+    // -- Lifecycle
+    implementation lifecycleExtensions
+    implementation lifecycleLiveData
+    // -- Material Design
+    implementation material
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

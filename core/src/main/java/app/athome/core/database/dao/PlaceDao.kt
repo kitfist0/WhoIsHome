@@ -1,15 +1,16 @@
 package app.athome.core.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import app.athome.core.database.entity.Place
 import app.athome.core.database.entity.PlaceWithRecipients
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PlaceDao {
 
+    @Transaction
     @Query("SELECT * FROM places")
-    fun getPlaceWithRecipients(): LiveData<List<PlaceWithRecipients>>
+    fun getPlaceWithRecipients(): Flow<List<PlaceWithRecipients>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlace(place: Place): Long
