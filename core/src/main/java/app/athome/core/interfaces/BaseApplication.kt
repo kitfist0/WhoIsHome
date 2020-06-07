@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import app.athome.core.di.DaggerCoreComponent
 
-abstract class CoreApplication: Application() {
+abstract class BaseApplication: Application() {
 
     private val coreComponent by lazy {
         DaggerCoreComponent

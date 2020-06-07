@@ -1,5 +1,5 @@
 package app.athome
 
-import app.athome.core.interfaces.CoreApplication
+import app.athome.core.interfaces.BaseApplication
 
-class App: CoreApplication()
+class App: BaseApplication()

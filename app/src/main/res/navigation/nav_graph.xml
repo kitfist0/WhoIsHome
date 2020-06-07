@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="app.athome.login.ui.LoginFragment"
+        android:label="Login">
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="app.athome.main.ui.MainFragment"
+        android:label="Main"/>
+
+</navigation>
