@@ -18,6 +18,11 @@ class PlaceAdapter(
     private val onRecipientChanged: ((Recipient) -> Unit)
 ) : RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
 
+    companion object {
+        val STATE_EXPAND = intArrayOf(android.R.attr.state_checked)
+        val STATE_COLLAPSE = intArrayOf(-1 * android.R.attr.state_checked)
+    }
+
     private val diffCallback = object: DiffUtil.ItemCallback<PlaceWithRecipients>() {
         override fun areItemsTheSame(
             oldItem: PlaceWithRecipients,
@@ -75,11 +80,11 @@ class PlaceAdapter(
 
         if (alreadyExpanded) {
             sparseArray.delete(key)
-            view.imageExpand.setImageResource(R.drawable.vd_rounded_expand_more)
+            view.imageExpand.setImageState(STATE_COLLAPSE, true)
             view.layoutWithRecycler.visibility = View.GONE
         } else {
             sparseArray.put(key, true)
-            view.imageExpand.setImageResource(R.drawable.vd_rounded_expand_less)
+            view.imageExpand.setImageState(STATE_EXPAND, true)
             view.layoutWithRecycler.visibility = View.VISIBLE
 
             view.recycler.apply {
