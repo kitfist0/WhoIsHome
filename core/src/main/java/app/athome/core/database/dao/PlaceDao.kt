@@ -10,7 +10,10 @@ interface PlaceDao {
 
     @Transaction
     @Query("SELECT * FROM places")
-    fun getPlaceWithRecipients(): Flow<List<PlaceWithRecipients>>
+    fun getPlacesWithRecipients(): Flow<List<PlaceWithRecipients>>
+
+    @Query("SELECT * FROM places WHERE id = :placeId")
+    suspend fun getPlaceWithRecipients(placeId: Long): PlaceWithRecipients
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPlace(place: Place): Long

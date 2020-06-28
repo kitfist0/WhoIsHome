@@ -1,3 +1,5 @@
 package app.athome.main.nav
 
-interface MainNavigation
+interface MainNavigation {
+    fun fromMainToPlace(placeId: Long)
+}

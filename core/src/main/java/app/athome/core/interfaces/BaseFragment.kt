@@ -11,7 +11,7 @@ abstract class BaseFragment<VM : ViewModel, NI>(layoutId: Int) : Fragment(layout
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var viewModel: VM
+    lateinit var viewModel: VM
     private val coreProvider: CoreProvider by lazy {
         (requireContext().applicationContext as BaseApplication).getCoreProvider()
     }
@@ -33,10 +33,6 @@ abstract class BaseFragment<VM : ViewModel, NI>(layoutId: Int) : Fragment(layout
     }
 
     protected abstract fun onViewModelCreated()
-
-    fun getViewModel(): VM {
-        return viewModel
-    }
 
     fun getNavigator(): NI {
         @Suppress("UNCHECKED_CAST")

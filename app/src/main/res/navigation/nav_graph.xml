@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appGraph"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="app.athome.login.ui.LoginFragment"
         android:label="Login">
+        <action
+            android:id="@+id/action_login_to_main"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/mainFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="app.athome.main.ui.MainFragment"
-        android:label="Main"/>
+        android:label="Main">
+        <action
+            android:id="@+id/action_main_to_place"
+            app:destination="@id/placeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/placeFragment"
+        android:name="app.athome.place.ui.PlaceFragment"
+        android:label="Place">
+        <argument
+            android:name="placeId"
+            app:argType="long"/>
+    </fragment>
 
 </navigation>

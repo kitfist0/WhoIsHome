@@ -23,11 +23,11 @@ class MainViewModel @Inject constructor(
 
     val emptyListEvent: SingleLiveEvent<Boolean> = SingleLiveEvent()
 
-    private val placeWithRecipients = liveData {
-        placeRepository.getPlaceWithRecipients().collect { emit(it) }
+    private val placesWithRecipients = liveData {
+        placeRepository.getPlacesWithRecipients().collect { emit(it) }
     }
 
-    val places = Transformations.map(placeWithRecipients) {
+    val places = Transformations.map(placesWithRecipients) {
         if (it.isNullOrEmpty()) {
             emptyListEvent.value = true
         } else {

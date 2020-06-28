@@ -1,3 +1,4 @@
+include ':place'
 include ':login'
 include ':core'
 include ':main'

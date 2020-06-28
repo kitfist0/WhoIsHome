@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -8,13 +8,13 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "app.athome"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -23,14 +23,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
+
+apply from: "$project.rootDir/versions.gradle"
 
 dependencies {
     implementation project(':core')
-    implementation project(':login')
-    implementation project(':main')
-    implementation project(':place')
+    // -- Constraint Layout
+    implementation constraint
+    // -- Dagger compiler
+    kapt daggerCompiler
+    // -- Lifecycle
+    implementation lifecycleExtensions
+    implementation lifecycleLiveData
+    // -- Material Design
+    implementation material
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

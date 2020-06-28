@@ -20,7 +20,7 @@ class PlaceAdapter(
 
     companion object {
         val STATE_EXPAND = intArrayOf(android.R.attr.state_checked)
-        val STATE_COLLAPSE = intArrayOf(-1 * android.R.attr.state_checked)
+        val STATE_COLLAPSE = intArrayOf(-1 * android.R.attr.state_checked.inc())
     }
 
     private val diffCallback = object: DiffUtil.ItemCallback<PlaceWithRecipients>() {

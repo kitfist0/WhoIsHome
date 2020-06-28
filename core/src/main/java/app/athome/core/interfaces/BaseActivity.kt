@@ -11,6 +11,10 @@ abstract class BaseActivity<T : BaseNavigator>(
 
     private lateinit var baseNavigator: BaseNavigator
 
+    private val navController by lazy {
+        findNavController(navHostId)
+    }
+
     override fun provideNavigator(): BaseNavigator {
         return baseNavigator
     }
@@ -25,11 +29,17 @@ abstract class BaseActivity<T : BaseNavigator>(
 
     override fun onResume() {
         super.onResume()
-        baseNavigator.bind(findNavController(navHostId))
+        baseNavigator.bind(navController)
     }
 
     override fun onPause() {
         super.onPause()
         baseNavigator.unbind()
+    }
+
+    override fun onBackPressed() {
+        if (!navController.popBackStack()) {
+            super.onBackPressed()
+        }
     }
 }

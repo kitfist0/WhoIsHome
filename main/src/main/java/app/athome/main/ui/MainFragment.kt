@@ -20,10 +20,10 @@ class MainFragment : BaseFragment<MainViewModel, MainNavigation>(R.layout.fragme
     private val placeAdapter by lazy {
         PlaceAdapter(
             onEditPlaceClick = {
-                Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                getNavigator().fromMainToPlace(it)
             },
             onRecipientChanged = {
-                    recipient -> getViewModel().updatePlaceRecipient(recipient)
+                    recipient -> viewModel.updatePlaceRecipient(recipient)
             }
         )
     }
@@ -31,15 +31,15 @@ class MainFragment : BaseFragment<MainViewModel, MainNavigation>(R.layout.fragme
     override fun onViewModelCreated() {
         recyclerView.adapter ?:let { recyclerView.adapter = placeAdapter }
         fab.setOnClickListener {
-            getViewModel().insertRandomPlaceWithRecipients()
+            viewModel.insertRandomPlaceWithRecipients()
         }
         loadingView.show()
         // Observe data
-        getViewModel().places.observe(viewLifecycleOwner, Observer {
+        viewModel.places.observe(viewLifecycleOwner, Observer {
             placeAdapter.submitList(it)
             loadingView.hide()
         })
-        getViewModel().emptyListEvent.observe(viewLifecycleOwner, Observer {
+        viewModel.emptyListEvent.observe(viewLifecycleOwner, Observer {
             Toast.makeText(requireContext(), R.string.no_places, Toast.LENGTH_LONG).show()
         })
     }
