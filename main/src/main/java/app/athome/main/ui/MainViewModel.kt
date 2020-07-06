@@ -1,6 +1,5 @@
 package app.athome.main.ui
 
-import android.util.Log
 import androidx.lifecycle.*
 import app.athome.core.database.entity.Place
 import app.athome.core.database.entity.Recipient
@@ -30,8 +29,6 @@ class MainViewModel @Inject constructor(
     val places = Transformations.map(placesWithRecipients) {
         if (it.isNullOrEmpty()) {
             emptyListEvent.value = true
-        } else {
-            logging("placeWithRecipients observed, num of items is ${it.size}")
         }
         return@map it
     }
@@ -42,7 +39,6 @@ class MainViewModel @Inject constructor(
             val latitude = Random.nextDouble(-90.00000, 90.00000)
             val longitude = Random.nextDouble(-180.00000, 180.00000)
             val place = Place(placeName, latitude, longitude)
-            logging("insert place, $placeName")
             val placeId = placeRepository.insertPlace(place)
             val recipients: MutableList<Recipient> = mutableListOf()
             for (i in 1..Random.nextInt(2, 4)) {
@@ -53,7 +49,6 @@ class MainViewModel @Inject constructor(
                     true
                 ))
             }
-            logging("insert recipients, size is ${recipients.size}")
             recipientRepository.insertRecipients(recipients)
         }
     }
@@ -62,9 +57,5 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             recipientRepository.updateRecipient(recipient)
         }
-    }
-
-    private fun logging(message: String) {
-        Log.d(TAG, message)
     }
 }
