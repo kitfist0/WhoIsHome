@@ -23,7 +23,7 @@ class MainFragment : BaseFragment<MainViewModel, MainNavigation>(R.layout.fragme
                 getNavigator().fromMainToPlace(it)
             },
             onRecipientChanged = {
-                    recipient -> viewModel.updatePlaceRecipient(recipient)
+                viewModel.updatePlaceRecipient(it)
             }
         )
     }
