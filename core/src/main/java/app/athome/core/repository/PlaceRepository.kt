@@ -18,4 +18,6 @@ class PlaceRepository @Inject constructor(
         dao.getPlaceWithRecipients(placeId)
 
     suspend fun insertPlace(place: Place) = dao.insertPlace(place)
+
+    suspend fun deletePlace(place: Place) = dao.deletePlace(place)
 }
