@@ -24,6 +24,7 @@ class CoreModule {
     fun provideDatabase(app: Application): CoreDatabase {
         return Room.databaseBuilder(app, CoreDatabase::class.java, "core_database")
             .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
             .build()
     }
 

@@ -9,8 +9,8 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
-@Config(manifest = Config.NONE)
 @RunWith(RobolectricTestRunner::class)
+@Config(sdk = [26])
 class PlaceAdapterTest {
 
     private lateinit var placeAdapter: PlaceAdapter
@@ -21,24 +21,21 @@ class PlaceAdapterTest {
     }
 
     @Test
-    fun submitListWithNull() {
-        // When
-        val list: List<PlaceWithRecipients>? = null
+    fun `submit list with null`() {
         // Given
+        val list: List<PlaceWithRecipients>? = null
+        // When
         placeAdapter.submitList(list)
         // Then
         Assert.assertEquals(placeAdapter.itemCount, 0)
     }
 
     @Test
-    fun submitList() {
-        // When
-        val list: MutableList<PlaceWithRecipients> = mutableListOf()
-        for (i in 1..10) {
-            val place = Place("place$i", 0.0, 0.0)
-            list.add(PlaceWithRecipients(place, emptyList()))
-        }
+    fun `submit list with items`() {
         // Given
+        val place = Place("Google Inc., Mountain View, CA, USA", 37.419857, -122.078827)
+        val list: List<PlaceWithRecipients> = List(4) { PlaceWithRecipients(place, emptyList()) }
+        // When
         placeAdapter.submitList(list)
         // Then
         Assert.assertEquals(placeAdapter.itemCount, list.size)
