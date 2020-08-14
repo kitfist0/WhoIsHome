@@ -1,5 +1,6 @@
 package app.athome.core.interfaces
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -7,24 +8,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-abstract class BaseFragment<VM : ViewModel, NI>(layoutId: Int) : Fragment(layoutId) {
+abstract class BaseFragment<VM : ViewModel>(layoutId: Int) : Fragment(layoutId) {
+
+    companion object {
+        @Suppress("UNCHECKED_CAST")
+        fun <T>Fragment.getNavigator(): T =
+            (requireActivity() as NavigatorProvider).provideNavigator() as T
+
+        fun Fragment.getCoreProvider() =
+            (requireContext().applicationContext as BaseApplication).getCoreProvider()
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: VM
-    private val coreProvider: CoreProvider by lazy {
-        (requireContext().applicationContext as BaseApplication).getCoreProvider()
-    }
 
     protected abstract fun getClassViewModel(): Class<VM>
-    protected abstract fun getNavInterface(): Class<NI>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        injectFragment(coreProvider)
+    override fun onAttach(context: Context) {
+        injectFragment()
+        super.onAttach(context)
     }
 
-    protected abstract fun injectFragment(coreProvider: CoreProvider)
+    protected abstract fun injectFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,9 +39,4 @@ abstract class BaseFragment<VM : ViewModel, NI>(layoutId: Int) : Fragment(layout
     }
 
     protected abstract fun onViewModelCreated()
-
-    fun getNavigator(): NI {
-        @Suppress("UNCHECKED_CAST")
-        return (requireActivity() as NavigatorProvider).provideNavigator() as NI
-    }
 }
