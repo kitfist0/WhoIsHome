@@ -1,34 +1,32 @@
 package app.athome.core.interfaces
 
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 
 abstract class BaseActivity(
     private val navigator: BaseNavigator,
-    layoutId: Int,
+    @LayoutRes layoutId: Int,
     private val navHostId: Int
 ) : AppCompatActivity(layoutId), NavigatorProvider {
 
-    private val navController by lazy {
-        findNavController(navHostId)
-    }
-
     override fun provideNavigator(): BaseNavigator {
+        navigator.navController ?: navigator.bind(findNavController(navHostId))
         return navigator
     }
 
-    override fun onResume() {
-        super.onResume()
-        navigator.bind(navController)
+    override fun onStart() {
+        super.onStart()
+        navigator.rebind(findNavController(navHostId))
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onStop() {
+        super.onStop()
         navigator.unbind()
     }
 
     override fun onBackPressed() {
-        if (!navController.popBackStack()) {
+        if (navigator.navController?.popBackStack() == false) {
             super.onBackPressed()
         }
     }

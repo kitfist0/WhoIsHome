@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorBackground1">#111111</color>
-    <color name="colorPrimary1">#202020</color>
-    <color name="colorPrimaryDark1">#202020</color>
+<!--    <color name="colorPrimary1">#202020</color>-->
+    <color name="colorPrimary1">#6E83FB</color>
+<!--    <color name="colorPrimaryDark1">#202020</color>-->
+    <color name="colorPrimaryDark1">#111111</color>
     <color name="colorSurface1">#171717</color>
     <color name="colorOnSurface1">#D5D5D5</color>
     <color name="colorSecondary1">#41B673</color>

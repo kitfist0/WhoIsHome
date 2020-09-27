@@ -7,6 +7,7 @@ import androidx.room.Room
 import app.athome.core.database.CoreDatabase
 import app.athome.core.database.dao.PlaceDao
 import app.athome.core.database.dao.RecipientDao
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,6 +19,9 @@ class CoreModule {
     fun provideSharedPreferences(application: Application): SharedPreferences {
         return PreferenceManager.getDefaultSharedPreferences(application)
     }
+
+    @Provides
+    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
 
     @Provides
     @Singleton

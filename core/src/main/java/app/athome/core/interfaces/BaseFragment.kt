@@ -2,7 +2,6 @@ package app.athome.core.interfaces
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -32,8 +31,8 @@ abstract class BaseFragment<VM : ViewModel>(layoutId: Int) : Fragment(layoutId) 
 
     protected abstract fun injectFragment()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(viewModelStore, viewModelFactory).get(getClassViewModel())
         onViewModelCreated()
     }

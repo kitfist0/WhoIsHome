@@ -44,6 +44,12 @@ dependencies {
     kapt roomCompiler
     implementation roomKtx
 
+    // -- Analytics
+    api 'com.google.firebase:firebase-analytics:17.5.0'
+    // -- Authentication
+    api 'com.google.firebase:firebase-auth:19.4.0'
+    api 'com.google.android.gms:play-services-auth:18.1.0'
+
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

@@ -27,11 +27,11 @@
                 android:id="@+id/imagePlace"
                 android:layout_width="@dimen/card_icon_size"
                 android:layout_height="@dimen/card_icon_size"
-                android:background="@drawable/oval_secondary_variant"
+                android:background="@drawable/oval_color_primary"
                 android:layout_margin="@dimen/margin_default"
                 android:padding="@dimen/margin_default"
                 android:src="@drawable/vd_rounded_place"
-                android:tint="?colorOnSurface"
+                app:tint="?attr/colorOnSurface"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,6 +46,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageExpand"
                 app:layout_constraintStart_toEndOf="@+id/imagePlace"
                 app:layout_constraintTop_toTopOf="parent">
+<!--                tools:text="@tools:sample/full_names"-->
                 <TextView
                     android:id="@+id/textItemTitle"
                     android:paddingStart="12dp"
@@ -55,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    tools:text="@tools:sample/full_names" />
+                    tools:text="@sample/sample_places.json/places/title" />
                 <TextView
                     android:id="@+id/textItemSubTitle"
                     android:paddingStart="12dp"
@@ -73,7 +74,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/asl_checkable_expand_collapse"
-                android:tint="?attr/colorControlNormal"
+                app:tint="?attr/colorControlNormal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -103,9 +104,6 @@
                 android:layout_height="55dp"
                 android:layout_margin="@dimen/margin_default"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                app:strokeColor="?colorSecondaryVariant"
-                app:rippleColor="?colorSecondaryVariant"
-                android:textColor="?colorSecondaryVariant"
                 app:strokeWidth="2dp"
                 android:text="@string/edit_place" />
         </LinearLayout>

@@ -6,7 +6,7 @@
         <!-- colorPrimary: The primary brand color of your app -->
         <item name="colorPrimary">@color/colorPrimary1</item>
         <!-- colorOnPrimary: The color used for elements displayed on top of your primary colors -->
-        <item name="colorOnPrimary">@android:color/darker_gray</item>
+        <item name="colorOnPrimary">@android:color/white</item>
         <!-- colorSecondary: The secondary brand color of your app -->
         <item name="colorSecondary">@color/colorSecondary1</item>
         <!-- colorOnSecondary: The color used for elements displayed on top of your secondary colors -->

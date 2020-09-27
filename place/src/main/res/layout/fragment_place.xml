@@ -13,8 +13,8 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="?attr/colorPrimary"
             app:title="@string/place"
+            android:background="?android:colorBackground"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />
 

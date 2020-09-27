@@ -28,9 +28,7 @@ class MainFragment : BaseFragment<MainViewModel>(R.layout.fragment_main) {
 
     override fun onViewModelCreated() {
         recyclerView.adapter ?:let { recyclerView.adapter = placeAdapter }
-        fab.setOnClickListener {
-            viewModel.insertRandomPlaceWithRecipients()
-        }
+        fab.setOnClickListener { viewModel.insertRandomPlaceWithRecipients() }
         loadingView.show()
         // Observe data
         viewModel.places.observe(viewLifecycleOwner, Observer {

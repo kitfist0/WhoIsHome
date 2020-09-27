@@ -1,0 +1,9 @@
+{
+  "places" :[
+    {"title" : "Home", "image" : "com.google.android.youtube", "lat" : "0.0", "lon" : "0.0"},
+    {"title" : "School", "image" : "com.google.android.youtube", "lat" : "0.0", "lon" : "0.0"},
+    {"title" : "Office", "image" : "com.google.android.youtube", "lat" : "0.0", "lon" : "0.0"},
+    {"title" : "Gym", "image" : "com.google.android.youtube", "lat" : "0.0", "lon" : "0.0"},
+    {"title" : "Market", "image" : "com.google.android.youtube", "lat" : "0.0", "lon" : "0.0"}
+  ]
+}

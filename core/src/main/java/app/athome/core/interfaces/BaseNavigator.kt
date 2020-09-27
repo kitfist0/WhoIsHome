@@ -10,6 +10,10 @@ abstract class BaseNavigator {
         this.navController = navController
     }
 
+    fun rebind(navController: NavController) {
+        this.navController ?: apply { this.navController = navController }
+    }
+
     fun unbind() {
         navController = null
     }

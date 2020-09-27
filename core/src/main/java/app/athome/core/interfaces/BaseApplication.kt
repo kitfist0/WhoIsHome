@@ -12,5 +12,7 @@ abstract class BaseApplication: Application() {
             .build()
     }
 
+    abstract fun getClientId(): String
+
     fun getCoreProvider() = coreComponent as CoreProvider
 }
