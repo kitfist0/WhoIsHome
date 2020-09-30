@@ -9,6 +9,8 @@ import app.athome.core.util.SingleLiveEvent
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.Scope
+import com.google.api.services.gmail.GmailScopes
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -32,6 +34,7 @@ class LoginViewModel @Inject constructor(
         private fun getSignInOptions(application: Application) =
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken((application as BaseApplication).getClientId())
+                .requestScopes(Scope(GmailScopes.GMAIL_SEND))
                 .requestEmail()
                 .build()
     }

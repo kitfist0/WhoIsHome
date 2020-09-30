@@ -5,7 +5,6 @@ import app.athome.core.database.entity.PlaceWithRecipients
 import app.athome.core.repository.PlaceRepository
 import javax.inject.Inject
 
-
 class PlaceViewModel @Inject constructor(
     private val placeRepository: PlaceRepository
 ) : ViewModel() {
