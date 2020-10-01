@@ -49,8 +49,6 @@ dependencies {
     // -- Lifecycle
     implementation lifecycleExtensions
     implementation lifecycleLiveData
-    // -- Material Design
-    implementation material
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
