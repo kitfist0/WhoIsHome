@@ -11,7 +11,7 @@ class PlaceFragment : BaseFragment<PlaceViewModel>(R.layout.fragment_place) {
     override fun getClassViewModel(): Class<PlaceViewModel> = PlaceViewModel::class.java
 
     override fun injectFragment() =
-        PlaceComponent.getComponent(getCoreProvider()).inject(this)
+        PlaceComponent.getComponent(getBaseApplication().getCoreProvider()).inject(this)
 
     override fun onViewModelCreated() {
         viewModel.setPlaceId(arguments?.getLong("placeId"))

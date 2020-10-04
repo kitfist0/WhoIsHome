@@ -1,0 +1,4 @@
+<resources>
+    <string name="pref_key_latitude" translatable="false">latitude</string>
+    <string name="pref_key_longitude" translatable="false">longitude</string>
+</resources>

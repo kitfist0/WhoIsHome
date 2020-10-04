@@ -18,7 +18,7 @@ class LoginFragment : BaseFragment<LoginViewModel>(R.layout.fragment_login) {
     override fun getClassViewModel(): Class<LoginViewModel> = LoginViewModel::class.java
 
     override fun injectFragment() =
-        LoginComponent.getComponent(getCoreProvider()).inject(this)
+        LoginComponent.getComponent(getBaseApplication().getCoreProvider()).inject(this)
 
     override fun onViewModelCreated() {
         buttonLogin.setOnClickListener { viewModel.onSignInClick() }

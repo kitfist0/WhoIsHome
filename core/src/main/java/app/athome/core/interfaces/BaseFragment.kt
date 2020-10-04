@@ -14,8 +14,8 @@ abstract class BaseFragment<VM : ViewModel>(layoutId: Int) : Fragment(layoutId) 
         fun <T>Fragment.getNavigator(): T =
             (requireActivity() as NavigatorProvider).provideNavigator() as T
 
-        fun Fragment.getCoreProvider() =
-            (requireContext().applicationContext as BaseApplication).getCoreProvider()
+        fun Fragment.getBaseApplication(): BaseApplication =
+            requireActivity().application as BaseApplication
     }
 
     @Inject

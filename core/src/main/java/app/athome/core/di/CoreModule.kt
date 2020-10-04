@@ -4,11 +4,12 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import androidx.room.Room
+import androidx.work.Configuration
 import app.athome.core.R
 import app.athome.core.database.CoreDatabase
+import app.athome.core.database.dao.LocationDao
 import app.athome.core.database.dao.PlaceDao
 import app.athome.core.database.dao.RecipientDao
-import app.athome.core.util.Postman
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.http.javanet.NetHttpTransport
@@ -32,17 +33,18 @@ class CoreModule {
     fun provideFirebaseAuth() = FirebaseAuth.getInstance()
 
     @Provides
-    fun providePostman(app: Application): Postman {
-        val credential = GoogleAccountCredential.usingOAuth2(app, listOf(GmailScopes.GMAIL_SEND))
+    fun provideCredential(app: Application): GoogleAccountCredential =
+        GoogleAccountCredential.usingOAuth2(app, listOf(GmailScopes.GMAIL_SEND))
             .apply {
                 backOff = ExponentialBackOff()
                 selectedAccount = GoogleSignIn.getLastSignedInAccount(app)?.account
             }
-        val gmail = Gmail.Builder(NetHttpTransport(), GsonFactory(), credential)
+
+    @Provides
+    fun provideGmail(app: Application, credential: GoogleAccountCredential): Gmail =
+        Gmail.Builder(NetHttpTransport(), GsonFactory(), credential)
             .setApplicationName(app.getString(R.string.app_name))
             .build()
-        return Postman(credential.selectedAccountName, gmail)
-    }
 
     @Provides
     @Singleton
@@ -59,4 +61,16 @@ class CoreModule {
     @Provides
     @Singleton
     fun provideRecipientDao(db: CoreDatabase): RecipientDao = db.recipientDao()
+
+    @Provides
+    @Singleton
+    fun provideLocationDao(db: CoreDatabase): LocationDao = db.locationDao()
+
+    @Provides
+    @Singleton
+    fun provideWorkManagerConfiguration(coreWorkerFactory: CoreWorkerFactory): Configuration =
+        Configuration.Builder()
+            .setMinimumLoggingLevel(android.util.Log.DEBUG)
+            .setWorkerFactory(coreWorkerFactory)
+            .build()
 }

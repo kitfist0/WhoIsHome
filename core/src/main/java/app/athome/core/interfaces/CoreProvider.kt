@@ -2,9 +2,9 @@ package app.athome.core.interfaces
 
 import android.app.Application
 import android.content.SharedPreferences
+import app.athome.core.repository.LocationRepository
 import app.athome.core.repository.PlaceRepository
 import app.athome.core.repository.RecipientRepository
-import app.athome.core.util.Postman
 import com.google.firebase.auth.FirebaseAuth
 
 interface CoreProvider {
@@ -19,5 +19,5 @@ interface CoreProvider {
 
     fun provideRecipientRepository(): RecipientRepository
 
-    fun providePostman(): Postman
+    fun provideLocationRepository(): LocationRepository
 }

@@ -13,7 +13,7 @@ class MainFragment : BaseFragment<MainViewModel>(R.layout.fragment_main) {
     override fun getClassViewModel(): Class<MainViewModel> = MainViewModel::class.java
 
     override fun injectFragment() =
-        MainComponent.getComponent(getCoreProvider()).inject(this)
+        MainComponent.getComponent(getBaseApplication().getCoreProvider()).inject(this)
 
     private val placeAdapter by lazy {
         PlaceAdapter(
