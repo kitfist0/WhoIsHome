@@ -6,7 +6,6 @@ import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import app.athome.core.interfaces.BaseApplication
 import app.athome.core.util.SingleLiveEvent
-import app.athome.core.work.LocationWorker
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
