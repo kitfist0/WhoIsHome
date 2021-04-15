@@ -5,5 +5,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compileOnly "io.gitlab.arturbosch.detekt:detekt-api:$detekt_version"
     implementation "io.gitlab.arturbosch.detekt:detekt-cli:$detekt_version"
-    testImplementation "junit:junit:4.13"
+    testImplementation "junit:junit:4.13.2"
 }
